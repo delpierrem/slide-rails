@@ -1,0 +1,35 @@
+<h1>Listing slides</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Desc</th>
+      <th>Author</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @slides.each do |slide| %>
+      <tr>
+        <td><%= slide.name %></td>
+        <td><%= slide.desc %></td>
+        <td><%= slide.author %></td>
+        <td><%= image_tag slide.picture.url(:thumb) %></td>
+        <td><%= slide.plublished%></td>
+        <td><%= slide.plublished_to%></td>
+        <td><%= slide.plublished_from%></td>
+        <td><%= link_to 'Show', [:admin, slide] %></td>
+        <td><%= link_to 'Edit', edit_admin_slide_path(slide) %></td>
+        <td><%= link_to 'Destroy', [:admin, slide], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Slide', new_admin_slide_path %>
